@@ -4,8 +4,14 @@ import { entradasRouter } from "./entradas.js";
 import { saidasRouter } from "./saidas.js";
 import { contribuicoesRouter } from "./contribuicoes.js";
 import { usuariosRouter } from "./usuarios.js";
+import { dashboardRouter } from "./dashboard.js";
 
 export const router = (req, res) => {
+
+    if (req.url.startsWith("/dashboard")) {
+        return dashboardRouter(req, res);
+    }
+
     if (req.url.startsWith("/usuarios")) {
         return usuariosRouter(req, res);
     }

@@ -65,7 +65,7 @@ export const atualizarMembro = async (req, res, id) => {
             const { name, telefone, endereco, ativo } = JSON.parse(body);
 
             const result = await pool.query(
-                "UPDATE membros SET nome=$1, telefone=$2, endereco=$3, ativo=$4 WHERE id=$5 RETURNING *",
+                "UPDATE membros SET name=$1, telefone=$2, endereco=$3, ativo=$4 WHERE id=$5 RETURNING *",
                 [name, telefone, endereco, ativo, id]
             );
 

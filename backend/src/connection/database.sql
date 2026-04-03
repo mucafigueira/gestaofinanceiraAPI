@@ -24,7 +24,7 @@ CREATE TABLE entradas (
     id SERIAL PRIMARY KEY, 
     descricao TEXT NOT NULL, 
     valor DECIMAL(10,2) NOT NULL, 
-    data_de_entrada DATE NOT NULL DEFAULT  CURRENT_TIMESTAMP, 
+    data_de_entrada DATE DEFAULT  CURRENT_TIMESTAMP, 
     usuario_id INT NOT NULL, -- Quem registrou
     data_de_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -49,7 +49,7 @@ CREATE TABLE contribuicoes (
     membro_id INT NOT NULL, -- Quem contribuiu
     entrada_id INT NOT NULL , -- Em qual entrada
     valor DECIMAL(10,2) NOT NULL, -- Quanto contribuiu
-    data_de_contribuicao  DATE NOT NULL DEFAULT CURRENT_DATE
+    data_de_contribuicao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
 -- Relações
 FOREIGN KEY (membro_id) REFERENCES membros(id),

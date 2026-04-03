@@ -10,7 +10,7 @@ export const criarEntrada = async (req, res) => {
             const { descricao, valor, data_de_entrada, usuario_id } = JSON.parse(body);
 
             const result = await pool.query(
-                "INSERT INTO entradas (descricao, valor, data, usuario_id) VALUES ($1,$2,$3,$4) RETURNING *",
+                "INSERT INTO entradas (descricao, valor, data_de_entrada, usuario_id) VALUES ($1,$2,$3,$4) RETURNING *",
                 [descricao, valor, data_de_entrada, usuario_id]
             );
 
@@ -24,9 +24,9 @@ export const criarEntrada = async (req, res) => {
 };
 
 // Listar entradas
-export const listarEntradas = async (req, res) => {
+export const listarEntradas = async (_req, res) => {
     try {
-        const result = await pool.query("SELECT * FROM entradas ORDER BY data DESC");
+        const result = await pool.query("SELECT * FROM entradas ORDER BY data_de_entrada DESC");
 
         res.writeHead(200);
         res.end(JSON.stringify(result.rows));

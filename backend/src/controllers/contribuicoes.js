@@ -7,11 +7,11 @@ export const criarContribuicao = async (req, res) => {
 
     req.on("end", async () => {
         try {
-            const { membro_id, entrada_id, valor, data_de_contribuicao } = JSON.parse(body);
+            const { membro_id, entrada_id, valor } = JSON.parse(body);
 
             const result = await pool.query(
-                "INSERT INTO contribuicoes (membro_id, entrada_id, valor, data) VALUES ($1,$2,$3,$4) RETURNING *",
-                [membro_id, entrada_id, valor, data_de_contribuicao]
+                "INSERT INTO contribuicoes (membro_id, entrada_id, valor) VALUES ($1,$2,$3) RETURNING *",
+                [membro_id, entrada_id, valor]
             );
 
             res.writeHead(201);
